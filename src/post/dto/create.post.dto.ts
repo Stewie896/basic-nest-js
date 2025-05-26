@@ -23,7 +23,7 @@ export class Vali_dator {
   @IsString({
     message: 'Invalid input shloud can only be combination of int and str',
   })
-  description: string | number;
+  description: string ;
 
   @IsNotEmpty({ message: 'Feild should not be empty' })
   @IsString({ message: 'Feild should be string' })
@@ -33,6 +33,8 @@ export class Vali_dator {
   @IsNotEmpty({ message: 'The value cannot be empty' })
   @IsNumber({}, { message: 'Feild should be number' })
   estimated_Target: number
+
+  id: number
 
 //   @IsDate({ message: 'The input should be date' })
 //   created_at: Date;

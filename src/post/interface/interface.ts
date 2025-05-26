@@ -3,7 +3,7 @@
 export interface Posts {
 title: string ;
 date?: Date;
-description: string | number;
+description: string ;
 publisher: string
 estimated_Target: number
 created_at?: Date;

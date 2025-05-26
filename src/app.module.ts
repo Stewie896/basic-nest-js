@@ -19,7 +19,8 @@ evv.config()
     HelloModule, 
     UserModule, PostModule ,
      TypeOrmModule,
-     DatabseModule
+     DatabseModule,
+     
   ],
   controllers: [AppController],
   providers: [AppService],
