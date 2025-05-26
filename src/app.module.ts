@@ -9,6 +9,7 @@ import { PostModule } from './post/post.module';
 import * as evv from 'dotenv';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DatabseModule } from './databse/databse.module';
+import { AuthModule } from './auth/auth.module';
 evv.config()
 
 @Module({
@@ -20,6 +21,7 @@ evv.config()
     UserModule, PostModule ,
      TypeOrmModule,
      DatabseModule,
+     AuthModule,
      
   ],
   controllers: [AppController],
