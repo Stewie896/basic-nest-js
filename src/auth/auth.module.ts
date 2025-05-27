@@ -4,11 +4,15 @@ import { AuthController } from './auth.controller';
 import { AuthService } from './auth.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User_Entity } from './db/auth_entity';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
   exports: [
 TypeOrmModule.forFeature([User_Entity]),
-TypeOrmModule
+TypeOrmModule,
+JwtModule.register({}),
+PassportModule
   ],
   controllers: [AuthController],
   providers: [AuthService]
