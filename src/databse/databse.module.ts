@@ -7,11 +7,11 @@ import { User_Entity } from 'src/auth/db/auth_entity';
 @Module({
    imports: [
     TypeOrmModule.forRoot({
-        type: 'postgres',
-        host: '127.0.0.1',
-        database: 'nest',
-        username: 'postgres',
-        password: 'Yukino123@',
+        type: process.env.type,
+        host: process.env.host',
+        database: process.env.db,
+        username: process.env.name,
+        password: process.env.pwd,
         entities: [Entityy , User_Entity],
         synchronize: true
     })
