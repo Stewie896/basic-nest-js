@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable prettier/prettier */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 /* eslint-disable @typescript-eslint/no-unsafe-member-access */
@@ -44,8 +46,8 @@ export class AuthService {
     return `User ${savedUser.email} signed up successfully`;
   }
 
-  async login(dto: Login_Dto): Promise<{ user: string; jwtToken: string }> {
-    const { username, password } = dto;
+  async login(dto: Login_Dto): Promise<{ user: string; jwtToken: string , refresh_token: string}> {
+    const { username, password} = dto;
     const user = await this.userRepository.findOne({ where: { username } });
 
     if (!user) {
@@ -58,11 +60,12 @@ export class AuthService {
     }
 
     const token = this.generateToken(user.username , user.id);
-    await this.refreshToken(user.id); // optionally store it
+    const rfs_tok = await this.refreshToken(user.id); // optionally store it
 
     return {
       user: user.username,
       jwtToken: token,
+      refresh_token: rfs_tok
     };
   }
 
@@ -90,7 +93,7 @@ export class AuthService {
     );
   }
 
-  private async verifyRefreshToken(token: string): Promise<void> {
+    async verifyRefreshToken(token: string): Promise<void> {
     try {
       const decoded = await this.jwtService.verify(token, {
         secret: process.env.JWT_REFRESH_SECRET || 'default-refresh-secret',

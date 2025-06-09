@@ -1,4 +1,6 @@
 /* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable prettier/prettier */
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { AuthService } from './auth.service';
 // import { Login_Dto } from './db/login_dto';
@@ -14,6 +16,12 @@ export class AuthController {
     @HttpCode(HttpStatus.CREATED)
     sgn_up(@Body() body: User_Login_dto){
       return this.working_tree.signup(body)
+    }
+
+    @Post('/refresh')
+    @HttpCode(HttpStatus.ACCEPTED)
+    refres_tok(@Body('refresh_token') ref){
+      this.working_tree.verifyRefreshToken(ref)
     }
 
     @Post('/login')

@@ -19,7 +19,7 @@ export class User_Entity{
   email: string
 
   @Column()
-  password: any
+  password: string
 
   @Column({default: Role.normal_user})
   role: Role.normal_user

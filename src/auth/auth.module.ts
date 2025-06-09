@@ -8,13 +8,13 @@ import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  exports: [
+  imports: [
 TypeOrmModule.forFeature([User_Entity]),
-TypeOrmModule,
 JwtModule.register({}),
 PassportModule
   ],
   controllers: [AuthController],
-  providers: [AuthService]
+  providers: [AuthService],
+  
 })
 export class AuthModule {}
